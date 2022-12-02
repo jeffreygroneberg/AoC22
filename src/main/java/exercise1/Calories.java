@@ -79,7 +79,7 @@ public class Calories {
 
     // parallel collector to build subsets of a list based on a seperator
     private static Collector<String, List<List<Integer>>, List<List<Integer>>> splitBySeparator(Predicate<String> sep) {
-        return Collector.of(() -> new ArrayList<List<Integer>>(Arrays.asList(new ArrayList<>())),
+        return Collector.of(() -> new ArrayList<>(Arrays.asList(new ArrayList<>())),
                 (l, elem) -> {
                     if (sep.test(elem)) {
                         l.add(new ArrayList<>());
