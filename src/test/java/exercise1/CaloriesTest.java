@@ -14,7 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@DisplayName("Tests to assure the right answer for the AoC22 Exercise 1")
+@DisplayName("Day 1")
 class CaloriesTest {
 
     List<String> example;

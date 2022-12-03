@@ -1,7 +1,9 @@
 package exercise3;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import util.BaseTest;
 import util.Utils;
 
 import java.io.File;
@@ -11,21 +13,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RucksackTest {
-    private List<String> example;
-    private List<String> input;
-
-    @BeforeEach
-    void setUp() throws IOException {
-        Utils utils = new Utils();
-        File fileExample = utils.getFile("exercise3_example.txt");
-        File fileRealInput = utils.getFile("exercise3_input.txt");
-
-        //Read files
-        example = Files.readAllLines(fileExample.toPath());
-        input = Files.readAllLines(fileRealInput.toPath());
+@DisplayName("Day 3")
+class RucksackTest extends BaseTest {
+    public RucksackTest() {
+        super("exercise3_example.txt", "exercise3_input.txt");
     }
-
 
     @Test
     void calculuatePriosExercise1Example() {
