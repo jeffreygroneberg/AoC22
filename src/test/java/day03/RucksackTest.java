@@ -1,22 +1,15 @@
-package exercise3;
+package day03;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import util.BaseTest;
-import util.Utils;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Day 3")
 class RucksackTest extends BaseTest {
     public RucksackTest() {
-        super("exercise3_example.txt", "exercise3_input.txt");
+        super("day03/day03_example.txt", "day03/day03_input.txt");
     }
 
     @Test

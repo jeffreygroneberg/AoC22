@@ -1,4 +1,4 @@
-package exercise2;
+package day02;
 
 import java.util.AbstractMap;
 import java.util.List;

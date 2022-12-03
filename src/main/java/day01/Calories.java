@@ -1,4 +1,4 @@
-package exercise1;
+package day01;
 
 import java.util.*;
 import java.util.function.Predicate;

@@ -1,4 +1,4 @@
-package exercise2;
+package day02;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,8 +21,8 @@ class RockPaperScissorTest {
     @BeforeEach
     void setUp() throws IOException {
         Utils utils = new Utils();
-        File fileExample = utils.getFile("exercise2_example.txt");
-        File fileRealInput = utils.getFile("exercise2_input.txt");
+        File fileExample = utils.getFile("day02/day02_example.txt");
+        File fileRealInput = utils.getFile("day02/day02_input.txt");
 
         //Read files
         example = Files.readAllLines(fileExample.toPath());

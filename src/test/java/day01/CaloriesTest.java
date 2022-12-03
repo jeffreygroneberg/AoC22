@@ -1,4 +1,4 @@
-package exercise1;
+package day01;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -25,8 +25,8 @@ class CaloriesTest {
     void prepareInput() throws IOException {
 
         Utils utils = new Utils();
-        File fileExample = utils.getFile("exercise1_example.txt");
-        File fileRealInput = utils.getFile("exercise1_input.txt");
+        File fileExample = utils.getFile("day01/day01_example.txt");
+        File fileRealInput = utils.getFile("day01/day01_input.txt");
 
         //Read file
         example = Files.readAllLines(fileExample.toPath());
