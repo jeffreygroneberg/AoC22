@@ -6,14 +6,17 @@ import java.util.stream.Collectors;
 
 public class Rucksack {
 
+    // Not sure if there is already a util method for this.
+    // Take the char and substract a or A to get to the common base
+    // and then add the alphabet "value"
     public int getPrioForLetter(Character c) {
 
+        if (Character.isUpperCase(c)) {
+            return c - 'A' + 27;
 
-        if (!Character.isUpperCase(c)) {
-            return c - 'a' + 1;
         }
 
-        return c - 'A' + 27;
+        return c - 'a' + 1;
 
     }
 
@@ -39,20 +42,24 @@ public class Rucksack {
 
         for (int i = 0; i <= rucksacks.size() - 3; i = i + 3) {
 
+            // Split the bucket
             String first = rucksacks.get(i);
             String two = rucksacks.get(i + 1);
             String three = rucksacks.get(i + 2);
 
+            // look for the char that is in all of them
+            // if we found the first char we can break (j = length)
+            // as there is only one to look for
             for (int j = 0; j < first.length(); j++) {
 
-                if (two.contains(String.valueOf(first.charAt(j)))
-                        && three.contains(String.valueOf(first.charAt(j)))) {
+                String toLookFor = String.valueOf(first.charAt(j));
+
+                if (two.contains(toLookFor)
+                        && three.contains(toLookFor)) {
                     foundBadges.add(first.charAt(j));
                     j = first.length();
                 }
             }
-
-
         }
 
         return foundBadges.stream().map(this::getPrioForLetter).collect(Collectors.summingInt(Integer::intValue));
