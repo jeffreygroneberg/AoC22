@@ -54,10 +54,12 @@ public abstract class SupplyStacksCrane {
         // initialize stacks
         IntStream.range(0, maxColumns).forEach(value -> this.stacks.add(new Stack<>()));
 
-        // create a line with our stamp to fill emptiness
         for (int i = maxHeight - 1; i >= 0; i--) {
 
+            // Stamp over so that we can just use "," as a split to get all items and have no
+            // whitespaces to deal with between columns
             String[] allItems = Utils.stampStringOver(stamp, stacks.get(i)).split(",");
+
             for (int j = 0; j < allItems.length; j++) {
                 char c = allItems[j].charAt(1);
                 if (c != 32)
