@@ -67,7 +67,7 @@ public abstract class SupplyStacksCrane {
 
         // do all moves
         plannedMoves.stream().forEach(integers -> this.move(integers.get(0), integers.get(1), integers.get(2)));
-        return stacks.stream().map(characters -> String.valueOf(characters.pop())).collect(Collectors.joining(""));
+        return stacks.stream().map(characters -> String.valueOf(characters.lastElement())).collect(Collectors.joining(""));
 
     }
 
