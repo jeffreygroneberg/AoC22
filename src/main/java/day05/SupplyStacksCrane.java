@@ -20,23 +20,23 @@ public abstract class SupplyStacksCrane {
 
     public abstract void move(Move move);
 
-    public void initializeStacksAndMoves(List<String> stacks) {
+    public void initializeStacksAndMoves(List<String> stacksAndMoves) {
 
         // find maxheight of stack and the number of columns
         int maxHeight = 0;
         int maxColumns = 0;
 
-        for (int i = 0; i < stacks.size(); i++) {
+        for (int i = 0; i < stacksAndMoves.size(); i++) {
 
             // go till we find the line of the column numbering
-            if (stacks.get(i).startsWith(" 1 ")) {
+            if (stacksAndMoves.get(i).startsWith(" 1 ")) {
                 maxHeight = i;
                 break;
             }
 
-            List<String> buckets = Utils.getStacksInLine(stacks.get(i));
+            List<String> buckets = Utils.getStacksInLine(stacksAndMoves.get(i));
 
-            // initialize stacks and max columns
+            // initialize stacksAndMoves and max columns
             if (i == 0) {
                 maxColumns = buckets.size();
                 IntStream.range(0, maxColumns).forEach(value -> this.stacks.add(new Stack<>()));
@@ -51,8 +51,8 @@ public abstract class SupplyStacksCrane {
         }
 
         // parse moves
-        for (int i = maxHeight + 2; i < stacks.size(); i++) {
-            List<Integer> integers = Utils.findIntegers(stacks.get(i));
+        for (int i = maxHeight + 2; i < stacksAndMoves.size(); i++) {
+            List<Integer> integers = Utils.findIntegers(stacksAndMoves.get(i));
             plannedMoves.add(new Move(integers.get(0), integers.get(1), integers.get(2)));
         }
     }
