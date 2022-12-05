@@ -1,5 +1,6 @@
 package day05;
 
+import org.apache.commons.lang.math.IntRange;
 import util.Utils;
 
 import java.util.*;
@@ -32,30 +33,37 @@ public abstract class SupplyStacksCrane {
         // find maxheight of stack and the number of columns
         int maxHeight = 0;
         int maxColumns = 0;
-        for (int i = 0; i < stacks.size(); i++)
+
+        String stamp = "";
+        for (int i = 0; i < stacks.size(); i++) {
+
+            // go till we find the line of the column numbering
             if (stacks.get(i).startsWith(" 1 ")) {
+
                 List<Integer> integers = Utils.findIntegers(stacks.get(i));
                 maxColumns = integers.get(integers.size() - 1);
                 maxHeight = i;
+
+                // create a stamp with all these columns
+                stamp = IntStream.range(0, maxColumns).mapToObj(value -> "[ ]").collect(Collectors.joining(","));
                 break;
+
             }
+        }
 
         // initialize stacks
         IntStream.range(0, maxColumns).forEach(value -> this.stacks.add(new Stack<>()));
+
+        // create a line with our stamp to fill emptiness
         for (int i = maxHeight - 1; i >= 0; i--) {
-            String currentLine = stacks.get(i);
-            for (int j = 0; j < maxColumns; j++) {
 
-                // read chars from lines
-                // Scanner position
-                int position = ((j + 1) * 4) - 3;
-                // might be that the line has not enough strings as the last columns are just empty
-                if (position >= currentLine.length()) continue;
-
-                Character scannedChar = currentLine.charAt(position);
-                if (scannedChar != 32) this.stacks.get(j).add(scannedChar);
-
+            String[] allItems = Utils.stampStringOver(stamp, stacks.get(i)).split(",");
+            for (int j = 0; j < allItems.length; j++) {
+                char c = allItems[j].charAt(1);
+                if (c != 32)
+                    this.stacks.get(j).add(c);
             }
+
         }
 
         // parse moves

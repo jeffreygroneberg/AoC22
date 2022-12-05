@@ -35,5 +35,25 @@ public class Utils {
         return integerList.stream().map(Integer::parseInt).collect(Collectors.toList());
 
     }
+
+    public static String stampStringOver(String stamp, String target) {
+
+        String newString = "";
+
+        for (int i = 0; i < stamp.length(); i++) {
+
+            if (i < target.length() && !(target.charAt(i) == ' '))
+                newString = newString.concat(String.valueOf(target.charAt(i)));
+
+            else
+                newString = newString.concat(String.valueOf(stamp.charAt(i)));
+        }
+
+        return newString;
+
+    }
+
+
 }
+
 
