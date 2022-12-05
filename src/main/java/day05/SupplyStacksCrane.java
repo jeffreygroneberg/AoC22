@@ -18,6 +18,7 @@ public abstract class SupplyStacksCrane {
         // create state of current stacks and all the moves to be applied
         this.initializeStacksAndMoves(stacks);
     }
+
     public abstract void move(Move move);
 
     public void initializeStacksAndMoves(List<String> stacks) {
@@ -35,10 +36,10 @@ public abstract class SupplyStacksCrane {
             }
 
             List<String> buckets = Utils.getStacksInLine(stacks.get(i));
-            maxColumns = buckets.size();
 
             // initialize stacks and max columns
             if (i == 0) {
+                maxColumns = buckets.size();
                 IntStream.range(0, maxColumns).forEach(value -> this.stacks.add(new Stack<>()));
             }
 
