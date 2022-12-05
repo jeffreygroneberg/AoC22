@@ -22,6 +22,21 @@ public class Utils {
         }
     }
 
+
+    public static List<String> getStacksInLine(String stringToSearch) {
+
+        Pattern integerPattern = Pattern.compile("\\[(\\S+)\\]|\\s\\s\\s\\s?");
+        Matcher matcher = integerPattern.matcher(stringToSearch);
+
+        List<String> buckets = new ArrayList<>();
+        while (matcher.find()) {
+            buckets.add(matcher.group());
+        }
+
+        return buckets;
+
+    }
+
     public static List<Integer> findIntegers(String stringToSearch) {
 
         Pattern integerPattern = Pattern.compile("-?\\d+");

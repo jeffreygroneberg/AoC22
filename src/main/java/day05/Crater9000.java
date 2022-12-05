@@ -9,10 +9,10 @@ public class Crater9000 extends SupplyStacksCrane {
     }
 
     @Override
-    public void move(int number, int from, int to) {
+    public void move(Move move) {
 
-        for (int i = 0; i < number; i++) {
-            this.stacks.get(to - 1).add(this.stacks.get(from - 1).pop());
+        for (int i = 0; i < move.number(); i++) {
+            this.stacks.get(move.to() - 1).add(this.stacks.get(move.from() - 1).pop());
         }
 
     }

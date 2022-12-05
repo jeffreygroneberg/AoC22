@@ -10,17 +10,17 @@ public class Crater9001 extends SupplyStacksCrane {
     }
 
     @Override
-    public void move(int number, int from, int to) {
+    public void move(Move move) {
 
         Stack<Character> tempStack = new Stack<>();
 
-        for (int i = 0; i < number; i++) {
-            tempStack.add(this.stacks.get(from - 1).pop());
+        for (int i = 0; i < move.number(); i++) {
+            tempStack.add(this.stacks.get(move.from() - 1).pop());
         }
 
         int initialSize = tempStack.size();
         for (int i = 0; i < initialSize; i++)
-            this.stacks.get(to - 1).add(tempStack.pop());
+            this.stacks.get(move.to() - 1).add(tempStack.pop());
 
     }
 }
