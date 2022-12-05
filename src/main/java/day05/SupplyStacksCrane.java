@@ -37,6 +37,7 @@ public abstract class SupplyStacksCrane {
                 List<Integer> integers = Utils.findIntegers(stacks.get(i));
                 maxColumns = integers.get(integers.size() - 1);
                 maxHeight = i;
+                break;
             }
 
         // initialize stacks
@@ -51,7 +52,7 @@ public abstract class SupplyStacksCrane {
                 // might be that the line has not enough strings as the last columns are just empty
                 if (position >= currentLine.length()) continue;
 
-                Character scannedChar = currentLine.charAt(((j + 1) * 4) - 3);
+                Character scannedChar = currentLine.charAt(position);
                 if (scannedChar != 32) this.stacks.get(j).add(scannedChar);
 
             }
