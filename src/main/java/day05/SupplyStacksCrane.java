@@ -45,7 +45,7 @@ public abstract class SupplyStacksCrane {
             IntStream.range(0, maxColumns).forEach(value -> {
                 String s = buckets.get(value);
                 char c = s.charAt(1);
-                if (c != 32)
+                if (!Character.isWhitespace(c))
                     this.stacks.get(value).add(0, c);
             });
         }
