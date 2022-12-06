@@ -7,7 +7,7 @@ public class TuninTrouble {
     public record Marker(int position, String sequence) {
     }
 
-    public Marker findMarker(String sequence, int sizeOfMarker) {
+    public Optional<Marker> findMarker(String sequence, int sizeOfMarker) {
 
         for (int i = 0; i < sequence.length() - sizeOfMarker; i++) {
 
@@ -20,7 +20,7 @@ public class TuninTrouble {
 
             // just check if the current set we have has the size we want and that's it.
             if (bag.size() == sizeOfMarker) {
-                return new Marker(i + sizeOfMarker, bag.stream().map(String::valueOf).collect(Collectors.joining("")));
+                return Optional.ofNullable(new Marker(i + sizeOfMarker, bag.stream().map(String::valueOf).collect(Collectors.joining(""))));
             }
         }
 

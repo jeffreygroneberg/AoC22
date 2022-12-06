@@ -13,7 +13,7 @@ class TuninTroubleTest {
     public void checkExamples1() {
 
         TuninTrouble trouble = new TuninTrouble();
-        TuninTrouble.Marker foundMarker = trouble.findMarker("bvwbjplbgvbhsrlpgdmjqwftvncz", 4);
+        TuninTrouble.Marker foundMarker = trouble.findMarker("bvwbjplbgvbhsrlpgdmjqwftvncz", 4).get();
 
         assertEquals("vwbj", foundMarker.sequence());
         assertEquals(5, foundMarker.position());
@@ -25,7 +25,7 @@ class TuninTroubleTest {
     public void checkInput1() {
 
         TuninTrouble trouble = new TuninTrouble();
-        TuninTrouble.Marker foundMarker = trouble.findMarker(input, 4);
+        TuninTrouble.Marker foundMarker = trouble.findMarker(input, 4).get();
 
         assertEquals("bdjq", foundMarker.sequence());
         assertEquals(1578, foundMarker.position());
@@ -37,7 +37,7 @@ class TuninTroubleTest {
     public void checkExamples2() {
 
         TuninTrouble trouble = new TuninTrouble();
-        TuninTrouble.Marker foundMarker = trouble.findMarker("bvwbjplbgvbhsrlpgdmjqwftvncz", 14);
+        TuninTrouble.Marker foundMarker = trouble.findMarker("bvwbjplbgvbhsrlpgdmjqwftvncz", 14).get();
 
         assertEquals("vbhsrlpgdmjqwf", foundMarker.sequence());
         assertEquals(23, foundMarker.position());
@@ -48,7 +48,7 @@ class TuninTroubleTest {
     public void checkInput2() {
 
         TuninTrouble trouble = new TuninTrouble();
-        TuninTrouble.Marker foundMarker = trouble.findMarker(input, 14);
+        TuninTrouble.Marker foundMarker = trouble.findMarker(input, 14).get();
 
         assertEquals("mdcbnwqgshpvfj", foundMarker.sequence());
         assertEquals(2178, foundMarker.position());
