@@ -27,19 +27,22 @@ public class NoSpaceLeftOnDevice {
 
             if (currentLine.startsWith("$ cd ..")) {
 
-                currentDirectory = leaveDirectory(currentDirectory);
+                leaveDirectory(currentDirectory);
+                currentDirectory = currentDirectory.getParent();
                 continue;
             }
 
             if (currentLine.startsWith("$ cd ")) {
 
-                currentDirectory = createDirectory(currentDirectory, currentLine);
+                Directory newDirectory = createDirectoryIn(currentDirectory, currentLine);
+                currentDirectory = newDirectory;
+
                 if (rootDir == null) rootDir = currentDirectory;
+                continue;
 
             }
 
             if (!Utils.findIntegers(currentLine).isEmpty()) {
-
                 addFileToDirectory(currentDirectory, currentLine);
             }
 
@@ -68,7 +71,7 @@ public class NoSpaceLeftOnDevice {
         return currentDirectory;
     }
 
-    private Directory createDirectory(Directory currentDirectory, String currentLine) {
+    private Directory createDirectoryIn(Directory currentDirectory, String currentLine) {
         // create a new directory and change pointer
         Directory newDirectory = new Directory();
         newDirectory.setParent(currentDirectory);
@@ -76,15 +79,14 @@ public class NoSpaceLeftOnDevice {
 
         if (currentDirectory != null) currentDirectory.getDirectories().add(newDirectory);
 
-        currentDirectory = newDirectory;
-        return currentDirectory;
+        return newDirectory;
     }
 
     private Directory leaveDirectory(Directory currentDirectory) {
 
         currentDirectory.setCalculatedSize(getTotalSumOfSizeOf(currentDirectory));
         allDirectories.add(currentDirectory);
-        return currentDirectory.getParent();
+        return currentDirectory;
 
     }
 
