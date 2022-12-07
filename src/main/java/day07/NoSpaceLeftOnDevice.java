@@ -66,7 +66,7 @@ public class NoSpaceLeftOnDevice {
         int size = Integer.parseInt(currentLine.split(" ")[0]);
         String name = (currentLine.split(" ")[1]);
 
-        currentDirectory.files.add(new File(name, size));
+        currentDirectory.getFiles().add(new File(name, size));
 
         return currentDirectory;
     }
@@ -92,7 +92,7 @@ public class NoSpaceLeftOnDevice {
 
     private int getTotalSumOfSizeOf(Directory dir) {
 
-        return dir.files.stream().map(File::size).collect(Collectors.summingInt(Integer::intValue)) + dir.directories.stream().map(directory -> getTotalSumOfSizeOf(directory)).collect(Collectors.summingInt(Integer::intValue));
+        return dir.getFiles().stream().map(File::size).collect(Collectors.summingInt(Integer::intValue)) + dir.getDirectories().stream().map(directory -> getTotalSumOfSizeOf(directory)).collect(Collectors.summingInt(Integer::intValue));
 
     }
 
@@ -104,9 +104,9 @@ public class NoSpaceLeftOnDevice {
 
     public Optional<Directory> getDirectoryToFreeSpaceOf(int freeSpaceWanted, int hddSize) {
 
-        int currentSpaceUsed = rootDir.calculatedSize;
+        int currentSpaceUsed = rootDir.getCalculatedSize();
         if (hddSize - currentSpaceUsed > freeSpaceWanted) return Optional.empty();
-        return allDirectories.stream().filter(directory -> hddSize - currentSpaceUsed + directory.calculatedSize > freeSpaceWanted).findFirst();
+        return allDirectories.stream().filter(directory -> hddSize - currentSpaceUsed + directory.getCalculatedSize() > freeSpaceWanted).findFirst();
 
     }
 

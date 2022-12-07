@@ -3,11 +3,11 @@ package day07;
 import java.util.*;
 
 public class Directory implements Comparable {
-    Directory parent;
-    String name;
-    Set<File> files = new LinkedHashSet<>();
-    Set<Directory> directories = new LinkedHashSet<>();
-    int calculatedSize;
+    private Directory parent;
+    private String name;
+    private Set<File> files = new LinkedHashSet<>();
+    private Set<Directory> directories = new LinkedHashSet<>();
+    private int calculatedSize;
 
     public String getName() {
         return name;

@@ -13,8 +13,8 @@ class NoSpaceLeftOnDeviceTest extends BaseTest {
 
     @Test
     void testBuildDirectoriesAndFilesExample1() {
-        NoSpaceLeftOnDevice device = new NoSpaceLeftOnDevice(example);
-        assertEquals(95437, device.getSumOfSizeForDirectoriesWith(10, size -> size < 100000));
+        NoSpaceLeftOnDevice fileSystem = new NoSpaceLeftOnDevice(example);
+        assertEquals(95437, fileSystem.getSumOfSizeForDirectoriesWith(10, size -> size < 100000));
     }
 
 
@@ -28,12 +28,12 @@ class NoSpaceLeftOnDeviceTest extends BaseTest {
     @Test
     void testBuildDirectoriesAndFilesExample2() {
         NoSpaceLeftOnDevice device = new NoSpaceLeftOnDevice(example);
-        assertEquals(24933642, device.getDirectoryToFreeSpaceOf(30000000, 70000000).get().calculatedSize);
+        assertEquals(24933642, device.getDirectoryToFreeSpaceOf(30000000, 70000000).get().getCalculatedSize());
     }
 
     @Test
     void testBuildDirectoriesAndFilesInput2() {
         NoSpaceLeftOnDevice device = new NoSpaceLeftOnDevice(input);
-        assertEquals(6999588, device.getDirectoryToFreeSpaceOf(30000000, 70000000).get().calculatedSize);
+        assertEquals(6999588, device.getDirectoryToFreeSpaceOf(30000000, 70000000).get().getCalculatedSize());
     }
 }
