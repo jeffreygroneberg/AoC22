@@ -20,11 +20,11 @@ public class TuninTrouble {
 
             // just check if the current set we have has the size we want and that's it.
             if (bag.size() == sizeOfMarker) {
-                return Optional.ofNullable(new Marker(i + sizeOfMarker, bag.stream().map(String::valueOf).collect(Collectors.joining(""))));
+                return Optional.of(new Marker(i + sizeOfMarker, bag.stream().map(String::valueOf).collect(Collectors.joining(""))));
             }
         }
 
-        return null;
+        return Optional.empty();
 
     }
 
