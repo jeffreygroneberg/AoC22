@@ -3,9 +3,6 @@ package day07;
 import java.util.*;
 
 public class Directory implements Comparable {
-
-
-
     Directory parent;
     String name;
     Set<File> files = new LinkedHashSet<>();
