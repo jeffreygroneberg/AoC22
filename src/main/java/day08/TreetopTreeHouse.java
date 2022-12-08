@@ -5,7 +5,7 @@ public class TreetopTreeHouse {
     public enum EDGE {
 
         LEFT(new int[]{-1, 0}), RIGHT(new int[]{1, 0}), UP(new int[]{0, -1}), DOWN(new int[]{0, 1});
-        public final int[] mask;
+        private final int[] mask;
 
         EDGE(int[] mask) {
             this.mask = mask;
@@ -63,7 +63,6 @@ public class TreetopTreeHouse {
         return markedForest;
 
     }
-
 
     public int[][] createVisibleTreesFromEdgesMask(int[][] forest, EDGE[] fromEdges) {
 
