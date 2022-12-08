@@ -17,7 +17,6 @@ public class TreetopTreeHouse {
 
         int highestTree = forest[treeY][treeX];
 
-        // all the rest
         for (int x = treeX + fromEdge.mask[0], y = treeY + fromEdge.mask[1]; (y < forest.length) && (y >= 0) && (x < forest[treeY].length) && (x >= 0); x = x + fromEdge.mask[0], y = y + fromEdge.mask[1]) {
             if (highestTree <= forest[y][x]) return false;
         }
@@ -28,7 +27,6 @@ public class TreetopTreeHouse {
 
     public int calculateScenicValueForTreeToEdge(int treeX, int treeY, int[][] forest, EDGE toEdge) {
 
-        // all the rest
         int scenicScore = 0;
         for (int x = treeX + toEdge.mask[0], y = treeY + toEdge.mask[1]; (y < forest.length) && (y >= 0) && (x < forest[treeY].length) && (x >= 0); x = x + toEdge.mask[0], y = y + toEdge.mask[1]) {
 
@@ -45,7 +43,7 @@ public class TreetopTreeHouse {
 
     public int[][] createScenicTreeMask(int[][] forest, EDGE[] toEdge) {
 
-        // create empty mask
+        // create empty mask as placeholder for result
         int[][] markedForest = new int[forest.length][forest[0].length];
 
         for (int y = 0; y < forest.length; y++) {
