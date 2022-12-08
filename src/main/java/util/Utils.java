@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Utils {
 
@@ -66,6 +68,29 @@ public class Utils {
 
         return newString;
 
+    }
+
+    public static int[] stringToNumbers(String line) {
+
+        return Stream.of(line.split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+    }
+
+    public static int[][] multipleLinesToNumberArrays(List<String> lines) {
+
+        int[][] numbers = new int[lines.size()][lines.get(0).length()];
+
+        for (int j = 0; j < lines.size(); j++) {
+
+            int[] line = stringToNumbers(lines.get(j));
+
+            for (int i = 0; i < line.length; i++) {
+                numbers[j][i] = line[i];
+            }
+        }
+
+        return numbers;
     }
 
 
