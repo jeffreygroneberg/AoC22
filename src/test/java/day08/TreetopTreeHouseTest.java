@@ -27,8 +27,8 @@ class TreetopTreeHouseTest extends BaseTest {
     public void testExercise1Example() {
 
         TreetopTreeHouse treetopTreeHouse = new TreetopTreeHouse();
-        int[][] ints = treetopTreeHouse.createVisibleTreesFromEdgesMask(example, TreetopTreeHouse.EDGE.values());
-        int sum = Arrays.stream(ints).flatMapToInt(ints1 -> Arrays.stream(ints1)).sum();
+        int[][] allVisibleTrees = treetopTreeHouse.createVisibleTreesFromEdgesMask(example, TreetopTreeHouse.EDGE.values());
+        int sum = Arrays.stream(allVisibleTrees).flatMapToInt(ints1 -> Arrays.stream(ints1)).sum();
 
         assertEquals(21, sum);
 
@@ -39,8 +39,8 @@ class TreetopTreeHouseTest extends BaseTest {
 
         TreetopTreeHouse treetopTreeHouse = new TreetopTreeHouse();
 
-        int[][] ints = treetopTreeHouse.createVisibleTreesFromEdgesMask(Utils.multipleLinesToNumberArrays(input), TreetopTreeHouse.EDGE.values());
-        int sum = Arrays.stream(ints).flatMapToInt(ints1 -> Arrays.stream(ints1)).sum();
+        int[][] allVisibleTrees = treetopTreeHouse.createVisibleTreesFromEdgesMask(Utils.multipleLinesToNumberArrays(input), TreetopTreeHouse.EDGE.values());
+        int sum = Arrays.stream(allVisibleTrees).flatMapToInt(ints1 -> Arrays.stream(ints1)).sum();
 
         assertEquals(1719, sum);
 
@@ -50,8 +50,8 @@ class TreetopTreeHouseTest extends BaseTest {
     public void testExercise2Example() {
 
         TreetopTreeHouse treetopTreeHouse = new TreetopTreeHouse();
-        int[][] ints = treetopTreeHouse.createScenicTreeMask(example, TreetopTreeHouse.EDGE.values());
-        int asInt = Arrays.stream(ints).flatMapToInt(ints1 -> Arrays.stream(ints1)).max().getAsInt();
+        int[][] scenicTreeMask = treetopTreeHouse.createScenicTreeWithEdgesMask(example, TreetopTreeHouse.EDGE.values());
+        int asInt = Arrays.stream(scenicTreeMask).flatMapToInt(ints1 -> Arrays.stream(ints1)).max().getAsInt();
 
         assertEquals(8, asInt);
 
@@ -61,8 +61,8 @@ class TreetopTreeHouseTest extends BaseTest {
     public void testExercise2Input() {
 
         TreetopTreeHouse treetopTreeHouse = new TreetopTreeHouse();
-        int[][] ints = treetopTreeHouse.createScenicTreeMask(Utils.multipleLinesToNumberArrays(input), TreetopTreeHouse.EDGE.values());
-        int asInt = Arrays.stream(ints).flatMapToInt(ints1 -> Arrays.stream(ints1)).max().getAsInt();
+        int[][] scenicTreeMask = treetopTreeHouse.createScenicTreeWithEdgesMask(Utils.multipleLinesToNumberArrays(input), TreetopTreeHouse.EDGE.values());
+        int asInt = Arrays.stream(scenicTreeMask).flatMapToInt(ints1 -> Arrays.stream(ints1)).max().getAsInt();
 
         assertEquals(590824, asInt);
 

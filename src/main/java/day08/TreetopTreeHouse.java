@@ -41,7 +41,7 @@ public class TreetopTreeHouse {
 
     }
 
-    public int[][] createScenicTreeMask(int[][] forest, EDGE[] toEdge) {
+    public int[][] createScenicTreeWithEdgesMask(int[][] forest, EDGE[] toEdges) {
 
         // create empty mask as placeholder for result
         int[][] markedForest = new int[forest.length][forest[0].length];
@@ -51,8 +51,8 @@ public class TreetopTreeHouse {
 
                 markedForest[y][x] = 1;
 
-                for (int k = 0; k < toEdge.length; k++) {
-                    int calculatedScore = calculateScenicValueForTreeToEdge(x, y, forest, toEdge[k]);
+                for (int k = 0; k < toEdges.length; k++) {
+                    int calculatedScore = calculateScenicValueForTreeToEdge(x, y, forest, toEdges[k]);
                     markedForest[y][x] = markedForest[y][x] * calculatedScore;
 
                 }
